@@ -1,0 +1,280 @@
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+/* ------------------------------------------------------------------ */
+/* SHIFA design tokens                                                */
+/* ------------------------------------------------------------------ */
+
+:root {
+  /* Brand */
+  --shifa-deep-teal: #1a4747;
+  --shifa-night-teal: #0d3d3d;
+  --shifa-lime: #c8e04a;
+  --shifa-light-teal: #3dd6d0;
+  --shifa-amber: #ffcf44;
+  --shifa-gold: #f5c518;
+  --shifa-logo-teal: #1a9e9e;
+  --shifa-dark-card: #1a3a3a;
+
+  /* Surfaces */
+  --shifa-background: #f2f3f5;
+  --shifa-soft: #f0f4f8;
+  --shifa-card: #ffffff;
+  --shifa-border: #e8edf2;
+
+  /* Text */
+  --shifa-ink: #1a1a1a;
+  --shifa-ink-soft: #6b6b6b;
+
+  /* Semantic */
+  --shifa-warning: #f59e0b;
+  --shifa-warning-ink: #b45309;
+  --shifa-warning-bg: #fef3c7;
+  --shifa-info: #06b6d4;
+  --shifa-info-ink: #0e7490;
+  --shifa-info-bg: #cffafe;
+  --shifa-success: #15803d;
+  --shifa-danger: #b91c1c;
+  --shifa-danger-bg: #fff1f2;
+
+  /* Motion */
+  --shifa-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --shifa-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --shifa-duration-fast: 180ms;
+  --shifa-duration-base: 320ms;
+  --shifa-duration-slow: 640ms;
+}
+
+@theme inline {
+  /* Only SHIFA colours exist as utilities, which keeps palettes disciplined. */
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --color-deep: var(--shifa-deep-teal);
+  --color-night: var(--shifa-night-teal);
+  --color-lime: var(--shifa-lime);
+  --color-aqua: var(--shifa-light-teal);
+  --color-sun: var(--shifa-amber);
+  --color-gold: var(--shifa-gold);
+  --color-logo: var(--shifa-logo-teal);
+  --color-panel: var(--shifa-dark-card);
+
+  --color-page: var(--shifa-background);
+  --color-soft: var(--shifa-soft);
+  --color-card: var(--shifa-card);
+  --color-line: var(--shifa-border);
+
+  --color-ink: var(--shifa-ink);
+  --color-ink-soft: var(--shifa-ink-soft);
+
+  --color-warning: var(--shifa-warning);
+  --color-warning-ink: var(--shifa-warning-ink);
+  --color-warning-bg: var(--shifa-warning-bg);
+  --color-info: var(--shifa-info);
+  --color-info-ink: var(--shifa-info-ink);
+  --color-info-bg: var(--shifa-info-bg);
+  --color-success: var(--shifa-success);
+  --color-danger: var(--shifa-danger);
+  --color-danger-bg: var(--shifa-danger-bg);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", monospace;
+
+  --ease-out-soft: var(--shifa-ease-out);
+  --ease-in-out-soft: var(--shifa-ease-in-out);
+}
+
+@theme {
+  /* Type scale: product scale + marketing display sizes */
+  --text-*: initial;
+  --text-11: 11px;
+  --text-11--line-height: 1.4;
+  --text-13: 13px;
+  --text-13--line-height: 1.4;
+  --text-15: 15px;
+  --text-15--line-height: 1.5;
+  --text-18: 18px;
+  --text-18--line-height: 1.5;
+  --text-22: 22px;
+  --text-22--line-height: 1.35;
+  --text-28: 28px;
+  --text-28--line-height: 1.2;
+  --text-38: 38px;
+  --text-38--line-height: 1.1;
+  --text-56: 56px;
+  --text-56--line-height: 1.05;
+  --text-72: 72px;
+  --text-72--line-height: 1.02;
+  --text-96: 96px;
+  --text-96--line-height: 1;
+  --text-120: 120px;
+  --text-120--line-height: 0.96;
+
+  /* Fluid headings used by marketing sections */
+  --text-hero: clamp(46px, 8.4vw, 120px);
+  --text-hero--line-height: 0.98;
+  --text-display: clamp(36px, 5.8vw, 88px);
+  --text-display--line-height: 1.02;
+  --text-title: clamp(32px, 4.2vw, 56px);
+  --text-title--line-height: 1.06;
+
+  --tracking-heading: -0.02em;
+  --tracking-label: 0.08em;
+
+  --radius-btn: 12px;
+  --radius-card: 16px;
+  --radius-panel: 24px;
+
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 6px 24px rgba(0, 0, 0, 0.1);
+  --shadow-deep: 0 10px 30px -10px rgba(26, 71, 71, 0.55);
+  --shadow-window: 0 40px 80px -30px rgba(13, 61, 61, 0.35), 0 2px 12px rgba(0, 0, 0, 0.06);
+
+  --animate-live: live-pulse 2.2s var(--shifa-ease-out) infinite;
+  --animate-wave: wave 1.6s var(--shifa-ease-in-out) 1.4s 1 both;
+  --animate-caret: caret 1s steps(1) infinite;
+  --animate-shimmer: shimmer 1.6s linear infinite;
+  --animate-spin-slow: spin 40s linear infinite;
+
+  @keyframes live-pulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+    70%,
+    100% {
+      transform: scale(2.6);
+      opacity: 0;
+    }
+  }
+
+  @keyframes wave {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    15% {
+      transform: rotate(16deg);
+    }
+    30% {
+      transform: rotate(-8deg);
+    }
+    45% {
+      transform: rotate(14deg);
+    }
+    60% {
+      transform: rotate(-4deg);
+    }
+    75% {
+      transform: rotate(8deg);
+    }
+  }
+
+  @keyframes caret {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes shimmer {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Base                                                               */
+/* ------------------------------------------------------------------ */
+
+@layer base {
+  html {
+    background: var(--shifa-background);
+    color: var(--shifa-ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.4;
+    background: var(--shifa-background);
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: var(--tracking-heading);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--shifa-lime);
+    color: var(--shifa-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--shifa-logo-teal);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  section[id] {
+    scroll-margin-top: 72px;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Motion guards                                                      */
+/* ------------------------------------------------------------------ */
+
+/*
+ * An inline script in <head> adds `.motion-ok` before first paint when the
+ * visitor has not asked for reduced motion. Only then are hero elements
+ * hidden, waiting for the GSAP intro. `.reveal-fallback` is added after a
+ * few seconds as a safety net in case scripts never run.
+ */
+.motion-ok [data-intro] {
+  opacity: 0;
+}
+
+.reveal-fallback [data-intro] {
+  opacity: 1 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Small utility layer for things Tailwind cannot express cleanly */
+@utility label-caps {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
