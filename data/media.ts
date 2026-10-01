@@ -4,7 +4,7 @@ import type { MediaImage, MediaVideo } from "@/types";
  * Every photo or video on the page is referenced from here.
  *
  * These are temporary editorial images from Unsplash used for the first
- * prototype. To switch to real SHIFA assets, drop the files into
+ * prototype. To switch to real ClickMed assets, drop the files into
  * /public/images (or /public/videos) and change `src` below, for example:
  *   src: "/images/hero/cabinet.jpg"
  * No component needs to change.
@@ -53,7 +53,20 @@ export const media = {
 
 /**
  * Optional hero video. Set to a MediaVideo (for example
- * { src: "/videos/hero/shifa.mp4", poster: "/images/hero/poster.jpg", type: "video/mp4" })
+ * { src: "/videos/hero/clickmed.mp4", poster: "/images/hero/poster.jpg", type: "video/mp4" })
  * and the hero will play it muted in place of `media.heroImage`.
  */
 export const heroVideo: MediaVideo | null = null;
+
+/**
+ * ClickMed brand artwork, generated from /ClickMed-logo (trimmed, web-sized).
+ * "-light" variants have the teal turned white for dark backgrounds.
+ */
+export const brand = {
+  logo: { src: "/brand/clickmed-logo.png", width: 608, height: 160 },
+  logoLight: { src: "/brand/clickmed-logo-light.png", width: 608, height: 160 },
+  mark: { src: "/brand/clickmed-mark.png", width: 247, height: 256 },
+  markLight: { src: "/brand/clickmed-mark-light.png", width: 247, height: 256 },
+  stacked: { src: "/brand/clickmed-logo-stacked.png", width: 684, height: 480 },
+  stackedLight: { src: "/brand/clickmed-logo-stacked-light.png", width: 684, height: 480 },
+} as const;

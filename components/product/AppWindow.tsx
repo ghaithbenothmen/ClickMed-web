@@ -8,7 +8,7 @@ import {
   UsersRound,
   type LucideIcon,
 } from "lucide-react";
-import { ShifaMark } from "@/components/brand/ShifaLogo";
+import { ClickMedMark } from "@/components/brand/ClickMedLogo";
 import { demo } from "@/data/content";
 import { cn } from "@/lib/utils";
 
@@ -33,7 +33,7 @@ type AppWindowProps = {
 };
 
 /**
- * The SHIFA application frame used by every mockup: a light chrome bar,
+ * The ClickMed application frame used by every mockup: a light chrome bar,
  * an icon sidebar and a content area on the soft background.
  */
 export function AppWindow({
@@ -69,7 +69,7 @@ export function AppWindow({
       <div className="flex">
         {sidebar && (
           <aside className="hidden w-16 shrink-0 flex-col items-center gap-1.5 border-r border-line bg-white py-4 md:flex">
-            <ShifaMark size={30} className="mb-3" />
+            <ClickMedMark size={30} className="mb-3" />
             {nav.map(({ id, icon: Icon, label }) => (
               <span
                 key={id}

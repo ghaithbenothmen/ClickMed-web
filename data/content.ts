@@ -5,7 +5,7 @@
  */
 
 export const site = {
-  name: "SHIFA",
+  name: "ClickMed",
   tagline: "Le cabinet médical, simplifié.",
   description:
     "Patients, rendez-vous, consultations et ordonnances réunis dans un seul espace de travail, avec une IA qui aide le médecin à réfléchir, sans jamais décider à sa place.",
@@ -13,7 +13,7 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   /**
    * Where "Demander un accès médecin" leads from the final section.
-   * Replace with the SHIFA app access-request route once it is public.
+   * Replace with the ClickMed app access-request route once it is public.
    */
   accessRequestUrl: "#contact",
 } as const;
@@ -24,16 +24,16 @@ export const hero = {
   lead: "Patients, rendez-vous, consultations et ordonnances réunis dans un seul espace de travail.",
   aiNote: "Une IA vous aide à réfléchir. La décision reste toujours entre les mains du médecin.",
   primaryCta: "Demander un accès médecin",
-  secondaryCta: "Découvrir SHIFA",
+  secondaryCta: "Découvrir ClickMed",
 } as const;
 
 export const intro = {
   statement: "Tout ce dont le médecin a besoin. Rien de plus.",
-  body: "SHIFA rassemble les outils essentiels du cabinet dans une expérience simple, rapide et pensée autour du médecin.",
+  body: "ClickMed rassemble les outils essentiels du cabinet dans une expérience simple, rapide et pensée autour du médecin.",
   fragmentedTitle: "Aujourd'hui, le cabinet est éparpillé.",
   fragmentedBody:
     "Un agenda d'un côté, les dossiers de l'autre, les ordonnances sur un carnet et les résultats dans un tiroir.",
-  unifiedTitle: "Avec SHIFA, tout tient dans un seul espace.",
+  unifiedTitle: "Avec ClickMed, tout tient dans un seul espace.",
   unifiedBody: "Le patient, sa consultation, son ordonnance et son prochain rendez-vous, au même endroit.",
   fragments: [
     "Agenda papier",
@@ -68,7 +68,7 @@ export const consultation = {
 export const ai = {
   chapter: { time: "09:38", label: "Réflexion clinique" },
   title: "Une IA qui aide à réfléchir. Jamais à décider.",
-  body: "SHIFA analyse les informations déjà présentes dans le dossier et propose des pistes de réflexion directement dans la consultation.",
+  body: "ClickMed analyse les informations déjà présentes dans le dossier et propose des pistes de réflexion directement dans la consultation.",
   disclaimer: "Aide à la décision uniquement. La validation finale revient toujours au médecin.",
   steps: [
     { title: "Données patient", text: "Âge, antécédents, allergies et traitements en cours." },
@@ -82,7 +82,7 @@ export const ai = {
 export const prescription = {
   chapter: { time: "09:41", label: "Ordonnance" },
   title: "Prescrire plus simplement.",
-  body: "Partez d'un modèle, ajustez les posologies, puis imprimez ou exportez en PDF. Si un médicament entre en conflit avec une allergie connue, SHIFA vous le signale avant l'impression.",
+  body: "Partez d'un modèle, ajustez les posologies, puis imprimez ou exportez en PDF. Si un médicament entre en conflit avec une allergie connue, ClickMed vous le signale avant l'impression.",
   points: ["Modèles d'ordonnance", "Alerte allergies", "Impression", "Export PDF"],
 } as const;
 
@@ -114,7 +114,7 @@ export const security = {
   chapter: { time: "18:00", label: "Fermeture de session" },
   title: "Vos données médicales méritent une attention particulière.",
   body: "Les accès sont créés et validés par l'administrateur. Chaque médecin dispose d'un compte personnel et d'une session protégée.",
-  flowTitle: "Comment un médecin rejoint SHIFA",
+  flowTitle: "Comment un médecin rejoint ClickMed",
   flow: [
     { title: "Demande d'accès", text: "Le médecin envoie sa demande." },
     { title: "Validation", text: "L'administrateur crée et valide le compte." },
@@ -126,13 +126,13 @@ export const security = {
 export const finalCta = {
   chapter: { time: "18:05", label: "Fin de journée" },
   title: "Prêt à simplifier votre cabinet ?",
-  body: "Demandez votre accès médecin et découvrez SHIFA.",
+  body: "Demandez votre accès médecin et découvrez ClickMed.",
   primaryCta: "Demander un accès médecin",
   secondaryCta: "Découvrir le produit",
 } as const;
 
 export const footer = {
-  copyright: "© 2026 SHIFA",
+  copyright: "© 2026 ClickMed",
   access: "Demander un accès",
 } as const;
 

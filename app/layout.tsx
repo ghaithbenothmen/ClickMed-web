@@ -64,7 +64,7 @@ export const viewport: Viewport = {
  * so the GSAP intro can reveal them without a flash. A timer shows them anyway
  * if the app never hydrates.
  */
-const motionScript = `(function(){try{var d=document.documentElement;if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('motion-ok');window.__shifaReveal=setTimeout(function(){d.classList.add('reveal-fallback')},4000)}}catch(e){}})();`;
+const motionScript = `(function(){try{var d=document.documentElement;if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('motion-ok');window.__clickmedReveal=setTimeout(function(){d.classList.add('reveal-fallback')},4000)}}catch(e){}})();`;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (

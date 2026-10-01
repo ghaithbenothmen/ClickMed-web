@@ -6,7 +6,7 @@ type Tone = "neutral" | "success" | "warning" | "info" | "danger" | "lime" | "te
 
 const tones: Record<Tone, string> = {
   neutral: "bg-soft text-ink-soft",
-  success: "bg-[color-mix(in_srgb,var(--shifa-success)_10%,white)] text-success",
+  success: "bg-[color-mix(in_srgb,var(--clickmed-success)_10%,white)] text-success",
   warning: "bg-warning-bg text-warning-ink",
   info: "bg-info-bg text-info-ink",
   danger: "bg-danger-bg text-danger",

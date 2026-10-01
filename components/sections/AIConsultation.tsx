@@ -1,6 +1,7 @@
 import { ShieldCheck } from "lucide-react";
 import { ScrollScene } from "@/components/animations/ScrollScene";
 import { TextReveal } from "@/components/animations/TextReveal";
+import { BrandMotif } from "@/components/brand/ClickMedLogo";
 import { AIAssistantUI } from "@/components/product/AIAssistantUI";
 import { Chapter } from "@/components/ui/Chapter";
 import { Container } from "@/components/ui/Container";
@@ -11,7 +12,7 @@ export function AIConsultation() {
     <section id="ia" data-nav-theme="dark" aria-labelledby="ai-title" className="relative bg-night text-white">
       {/* Brand motif, quiet on dark */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-        <span className="absolute -bottom-40 -left-40 size-[520px] rotate-45 rounded-[96px] border border-white/5" />
+        <BrandMotif tone="light" className="absolute -bottom-48 -left-48 size-[620px] opacity-60" />
       </div>
 
       <ScrollScene scene="ai" className="relative lg:flex lg:h-svh lg:min-h-[760px] lg:items-center">
@@ -52,7 +53,7 @@ export function AIConsultation() {
 
           <figure className="relative lg:self-center">
             <figcaption className="sr-only">
-              Démonstration de l&apos;assistant SHIFA pour Sarra Trabelsi : lecture du dossier et du contexte clinique,
+              Démonstration de l&apos;assistant ClickMed pour Sarra Trabelsi : lecture du dossier et du contexte clinique,
               puis trois hypothèses classées par probabilité (infection virale, pneumonie, bronchite aiguë), les
               points à vérifier (température, auscultation, évolution des symptômes) et un rappel de l&apos;allergie à
               la pénicilline. Aide à la décision uniquement.

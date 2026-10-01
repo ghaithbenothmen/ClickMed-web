@@ -7,7 +7,7 @@ import { Kbd } from "@/components/ui/Kbd";
 import { getLenis, scrollToHash } from "@/lib/scroll";
 import { cn, prefersReducedMotion } from "@/lib/utils";
 
-export const OPEN_PALETTE_EVENT = "shifa:open-palette";
+export const OPEN_PALETTE_EVENT = "clickmed:open-palette";
 
 const destinations = [
   { label: "Accueil", hint: "Le cabinet médical, simplifié.", href: "#top" },
@@ -19,7 +19,7 @@ const destinations = [
   { label: "Productivité", hint: "Ctrl + K, autosave", href: "#productivite" },
   { label: "Fonctionnalités", hint: "Toute la journée en un outil", href: "#fonctionnalites" },
   { label: "Sécurité", hint: "Comptes validés, session protégée", href: "#securite" },
-  { label: "Demander un accès médecin", hint: "Rejoindre SHIFA", href: "#contact" },
+  { label: "Demander un accès médecin", hint: "Rejoindre ClickMed", href: "#contact" },
 ] as const;
 
 const normalize = (s: string) =>
@@ -30,7 +30,7 @@ const normalize = (s: string) =>
 
 /**
  * A working Ctrl + K palette for navigating this page. It mirrors the one in
- * the SHIFA app and makes the productivity section tangible.
+ * the ClickMed app and makes the productivity section tangible.
  */
 export function CommandPalette() {
   const [open, setOpen] = useState(false);

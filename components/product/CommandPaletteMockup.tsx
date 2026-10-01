@@ -13,7 +13,7 @@ const actions = [
   { label: "Nouveau rendez-vous", icon: CalendarPlus },
 ];
 
-/** The in-app Ctrl + K palette, on the dark SHIFA surface. */
+/** The in-app Ctrl + K palette, on the dark ClickMed surface. */
 export function CommandPaletteMockup() {
   return (
     <div className="relative">

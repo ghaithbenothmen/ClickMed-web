@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { gsap, useGSAP } from "@/animations/gsap";
-import { ShifaLogo } from "@/components/brand/ShifaLogo";
+import { ClickMedLogo } from "@/components/brand/ClickMedLogo";
 import { Button } from "@/components/ui/Button";
 import { accessHref, navigation } from "@/data/navigation";
 import { hero } from "@/data/content";
@@ -126,8 +126,8 @@ export function Navbar() {
             scrolled ? "h-16" : "h-20",
           )}
         >
-          <a href="#top" className="relative z-10 rounded-lg" aria-label="SHIFA, retour en haut de page">
-            <ShifaLogo markSize={34} tone={dark && !open ? "light" : "dark"} />
+          <a href="#top" className="relative z-10 rounded-lg" aria-label="ClickMed, retour en haut de page">
+            <ClickMedLogo height={scrolled ? 36 : 44} alt="" priority tone={dark && !open ? "light" : "dark"} className="transition-[height] duration-300" />
           </a>
 
           <ul className="hidden items-center gap-1 md:flex">

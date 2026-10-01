@@ -5,7 +5,7 @@ import { LiveDot } from "@/components/ui/LiveDot";
 import { demo } from "@/data/content";
 import type { AppointmentStatus } from "@/types";
 
-/** The SHIFA home screen, as a doctor sees it at the start of the day. */
+/** The ClickMed home screen, as a doctor sees it at the start of the day. */
 export function DashboardMockup() {
   const next = demo.agenda[1];
 
@@ -55,7 +55,7 @@ export function DashboardMockup() {
           </div>
           <span
             aria-hidden
-            className="pointer-events-none absolute -top-10 -right-10 size-36 rotate-45 rounded-[28px] border border-white/8"
+            className="pointer-events-none absolute -top-12 -right-12 size-36 rounded-full border border-white/8"
           />
         </div>
 

@@ -45,7 +45,7 @@ export function ConsultationExperience() {
 
         <ScrollScene scene="consultation" as="figure" className="mt-14 sm:mt-20">
           <figcaption className="sr-only">
-            Démonstration d&apos;une consultation SHIFA : motif, examen clinique, diagnostics et notes à gauche ;
+            Démonstration d&apos;une consultation ClickMed : motif, examen clinique, diagnostics et notes à gauche ;
             constantes (tension 120/80, FC 72 bpm, température 37,1 °C, SpO₂ 98 %, poids 72 kg, taille 178 cm)
             et historique à droite. Valeurs de démonstration.
           </figcaption>

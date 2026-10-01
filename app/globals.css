@@ -2,89 +2,89 @@
 @import "lenis/dist/lenis.css";
 
 /* ------------------------------------------------------------------ */
-/* SHIFA design tokens                                                */
+/* ClickMed design tokens                                                */
 /* ------------------------------------------------------------------ */
 
 :root {
   /* Brand */
-  --shifa-deep-teal: #1a4747;
-  --shifa-night-teal: #0d3d3d;
-  --shifa-lime: #c8e04a;
-  --shifa-light-teal: #3dd6d0;
-  --shifa-amber: #ffcf44;
-  --shifa-gold: #f5c518;
-  --shifa-logo-teal: #1a9e9e;
-  --shifa-dark-card: #1a3a3a;
+  --clickmed-deep-teal: #1a4747;
+  --clickmed-night-teal: #0d3d3d;
+  --clickmed-lime: #c8e04a;
+  --clickmed-light-teal: #3dd6d0;
+  --clickmed-amber: #ffcf44;
+  --clickmed-gold: #f5c518;
+  --clickmed-logo-teal: #1a9e9e;
+  --clickmed-dark-card: #1a3a3a;
 
   /* Surfaces */
-  --shifa-background: #f2f3f5;
-  --shifa-soft: #f0f4f8;
-  --shifa-card: #ffffff;
-  --shifa-border: #e8edf2;
+  --clickmed-background: #f2f3f5;
+  --clickmed-soft: #f0f4f8;
+  --clickmed-card: #ffffff;
+  --clickmed-border: #e8edf2;
 
   /* Text */
-  --shifa-ink: #1a1a1a;
-  --shifa-ink-soft: #6b6b6b;
+  --clickmed-ink: #1a1a1a;
+  --clickmed-ink-soft: #6b6b6b;
 
   /* Semantic */
-  --shifa-warning: #f59e0b;
-  --shifa-warning-ink: #b45309;
-  --shifa-warning-bg: #fef3c7;
-  --shifa-info: #06b6d4;
-  --shifa-info-ink: #0e7490;
-  --shifa-info-bg: #cffafe;
-  --shifa-success: #15803d;
-  --shifa-danger: #b91c1c;
-  --shifa-danger-bg: #fff1f2;
+  --clickmed-warning: #f59e0b;
+  --clickmed-warning-ink: #b45309;
+  --clickmed-warning-bg: #fef3c7;
+  --clickmed-info: #06b6d4;
+  --clickmed-info-ink: #0e7490;
+  --clickmed-info-bg: #cffafe;
+  --clickmed-success: #15803d;
+  --clickmed-danger: #b91c1c;
+  --clickmed-danger-bg: #fff1f2;
 
   /* Motion */
-  --shifa-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --shifa-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --shifa-duration-fast: 180ms;
-  --shifa-duration-base: 320ms;
-  --shifa-duration-slow: 640ms;
+  --clickmed-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --clickmed-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --clickmed-duration-fast: 180ms;
+  --clickmed-duration-base: 320ms;
+  --clickmed-duration-slow: 640ms;
 }
 
 @theme inline {
-  /* Only SHIFA colours exist as utilities, which keeps palettes disciplined. */
+  /* Only ClickMed colours exist as utilities, which keeps palettes disciplined. */
   --color-*: initial;
   --color-white: #ffffff;
   --color-black: #000000;
   --color-transparent: transparent;
   --color-current: currentColor;
 
-  --color-deep: var(--shifa-deep-teal);
-  --color-night: var(--shifa-night-teal);
-  --color-lime: var(--shifa-lime);
-  --color-aqua: var(--shifa-light-teal);
-  --color-sun: var(--shifa-amber);
-  --color-gold: var(--shifa-gold);
-  --color-logo: var(--shifa-logo-teal);
-  --color-panel: var(--shifa-dark-card);
+  --color-deep: var(--clickmed-deep-teal);
+  --color-night: var(--clickmed-night-teal);
+  --color-lime: var(--clickmed-lime);
+  --color-aqua: var(--clickmed-light-teal);
+  --color-sun: var(--clickmed-amber);
+  --color-gold: var(--clickmed-gold);
+  --color-logo: var(--clickmed-logo-teal);
+  --color-panel: var(--clickmed-dark-card);
 
-  --color-page: var(--shifa-background);
-  --color-soft: var(--shifa-soft);
-  --color-card: var(--shifa-card);
-  --color-line: var(--shifa-border);
+  --color-page: var(--clickmed-background);
+  --color-soft: var(--clickmed-soft);
+  --color-card: var(--clickmed-card);
+  --color-line: var(--clickmed-border);
 
-  --color-ink: var(--shifa-ink);
-  --color-ink-soft: var(--shifa-ink-soft);
+  --color-ink: var(--clickmed-ink);
+  --color-ink-soft: var(--clickmed-ink-soft);
 
-  --color-warning: var(--shifa-warning);
-  --color-warning-ink: var(--shifa-warning-ink);
-  --color-warning-bg: var(--shifa-warning-bg);
-  --color-info: var(--shifa-info);
-  --color-info-ink: var(--shifa-info-ink);
-  --color-info-bg: var(--shifa-info-bg);
-  --color-success: var(--shifa-success);
-  --color-danger: var(--shifa-danger);
-  --color-danger-bg: var(--shifa-danger-bg);
+  --color-warning: var(--clickmed-warning);
+  --color-warning-ink: var(--clickmed-warning-ink);
+  --color-warning-bg: var(--clickmed-warning-bg);
+  --color-info: var(--clickmed-info);
+  --color-info-ink: var(--clickmed-info-ink);
+  --color-info-bg: var(--clickmed-info-bg);
+  --color-success: var(--clickmed-success);
+  --color-danger: var(--clickmed-danger);
+  --color-danger-bg: var(--clickmed-danger-bg);
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", monospace;
 
-  --ease-out-soft: var(--shifa-ease-out);
-  --ease-in-out-soft: var(--shifa-ease-in-out);
+  --ease-out-soft: var(--clickmed-ease-out);
+  --ease-in-out-soft: var(--clickmed-ease-in-out);
 }
 
 @theme {
@@ -133,8 +133,8 @@
   --shadow-deep: 0 10px 30px -10px rgba(26, 71, 71, 0.55);
   --shadow-window: 0 40px 80px -30px rgba(13, 61, 61, 0.35), 0 2px 12px rgba(0, 0, 0, 0.06);
 
-  --animate-live: live-pulse 2.2s var(--shifa-ease-out) infinite;
-  --animate-wave: wave 1.6s var(--shifa-ease-in-out) 1.4s 1 both;
+  --animate-live: live-pulse 2.2s var(--clickmed-ease-out) infinite;
+  --animate-wave: wave 1.6s var(--clickmed-ease-in-out) 1.4s 1 both;
   --animate-caret: caret 1s steps(1) infinite;
   --animate-shimmer: shimmer 1.6s linear infinite;
   --animate-spin-slow: spin 40s linear infinite;
@@ -195,8 +195,8 @@
 
 @layer base {
   html {
-    background: var(--shifa-background);
-    color: var(--shifa-ink);
+    background: var(--clickmed-background);
+    color: var(--clickmed-ink);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -206,7 +206,7 @@
     font-family: var(--font-sans);
     font-size: 15px;
     line-height: 1.4;
-    background: var(--shifa-background);
+    background: var(--clickmed-background);
     overflow-x: clip;
   }
 
@@ -223,12 +223,12 @@
   }
 
   ::selection {
-    background: var(--shifa-lime);
-    color: var(--shifa-ink);
+    background: var(--clickmed-lime);
+    color: var(--clickmed-ink);
   }
 
   :focus-visible {
-    outline: 2px solid var(--shifa-logo-teal);
+    outline: 2px solid var(--clickmed-logo-teal);
     outline-offset: 3px;
     border-radius: 6px;
   }

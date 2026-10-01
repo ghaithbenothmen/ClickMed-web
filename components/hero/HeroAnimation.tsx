@@ -6,7 +6,7 @@ import { buildHeroIntro, buildHeroScroll } from "@/animations/hero";
 
 declare global {
   interface Window {
-    __shifaReveal?: number;
+    __clickmedReveal?: number;
   }
 }
 
@@ -19,7 +19,7 @@ export function HeroAnimation({ children, className }: { children: React.ReactNo
       const root = ref.current;
       if (!root) return;
       // The script in <head> would otherwise force-show the hero after a delay.
-      if (window.__shifaReveal) window.clearTimeout(window.__shifaReveal);
+      if (window.__clickmedReveal) window.clearTimeout(window.__clickmedReveal);
 
       const mm = gsap.matchMedia();
       mm.add(mq.motion, () => {

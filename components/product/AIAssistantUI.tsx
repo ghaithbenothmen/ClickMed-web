@@ -43,7 +43,7 @@ function Strength({ value }: { value: number }) {
   );
 }
 
-/** The SHIFA assistant, as it appears beside a consultation. */
+/** The ClickMed assistant, as it appears beside a consultation. */
 export function AIAssistantUI() {
   return (
     <div data-ai-panel className="overflow-hidden rounded-panel border border-white/10 bg-white text-ink shadow-window">
@@ -52,7 +52,7 @@ export function AIAssistantUI() {
         <span className="flex size-8 items-center justify-center rounded-lg bg-lime text-ink">
           <Sparkles size={16} strokeWidth={2.25} />
         </span>
-        <p className="label-caps text-deep">Assistant SHIFA</p>
+        <p className="label-caps text-deep">Assistant ClickMed</p>
         <span className="ml-auto grid text-[11px] font-semibold">
           <span data-ai-status="busy" className="invisible col-start-1 row-start-1 inline-flex items-center justify-end gap-2 text-ink-soft">
             <LiveDot /> Analyse du dossier…
@@ -103,7 +103,7 @@ export function AIAssistantUI() {
                 data-ai-hypo
                 className={cn(
                   "grid grid-cols-[auto_1fr] gap-x-3 rounded-xl border px-3.5 py-3",
-                  h.rank === "01" ? "border-deep/25 bg-[color-mix(in_srgb,var(--shifa-lime)_12%,white)]" : "border-line bg-white",
+                  h.rank === "01" ? "border-deep/25 bg-[color-mix(in_srgb,var(--clickmed-lime)_12%,white)]" : "border-line bg-white",
                 )}
               >
                 <span className="font-mono text-[13px] font-medium text-ink-soft">{h.rank}</span>

@@ -1,4 +1,4 @@
-import { ShifaMark } from "@/components/brand/ShifaLogo";
+import { BrandMotif, ClickMedMark } from "@/components/brand/ClickMedLogo";
 import { MagneticButton } from "@/components/animations/MagneticButton";
 import { HeroAnimation } from "@/components/hero/HeroAnimation";
 import { HeroVisual } from "@/components/hero/HeroVisual";
@@ -26,11 +26,10 @@ export function Hero() {
   return (
     <section id="top" aria-labelledby="hero-title" className="relative overflow-clip pt-32 pb-24 sm:pt-36 lg:pb-32">
       <HeroAnimation>
-        {/* Brand motif: the logo's two squares, drawn as outlines at architectural scale */}
-        <div aria-hidden className="pointer-events-none absolute -top-64 -right-80 hidden md:block" data-hero-drift>
-          <div className="relative size-[760px]" data-hero-bg>
-            <span className="absolute inset-[18%] rotate-45 rounded-[120px] border border-deep/8" />
-            <span className="absolute inset-[18%] translate-x-[14%] -rotate-12 rounded-[120px] border border-lime/35" />
+        {/* Brand motif: the symbol's C, crescent and ring, drawn as outlines at architectural scale */}
+        <div aria-hidden className="pointer-events-none absolute -top-56 -right-72 hidden md:block" data-hero-drift>
+          <div className="size-[820px]" data-hero-bg>
+            <BrandMotif className="size-full" />
           </div>
         </div>
 
@@ -54,9 +53,9 @@ export function Hero() {
                   <HeadlineWords line={lastLine} />
                   <span
                     data-hero-mark
-                    className="ml-[0.06em] inline-block size-[0.36em] align-baseline"
+                    className="ml-[0.08em] inline-block size-[0.5em] align-[-0.02em]"
                   >
-                    <ShifaMark size={44} className="size-full" />
+                    <ClickMedMark size={96} className="size-full object-contain" />
                   </span>
                 </span>
               </span>

@@ -67,7 +67,7 @@ const playOnEnter = (trigger: Element, start = "top 72%"): ScrollTrigger.Vars =>
 
 /* ------------------------------------------------------------------ */
 
-/** Fragmented cabinet → one SHIFA window. Pinned and scrubbed on desktop. */
+/** Fragmented cabinet → one ClickMed window. Pinned and scrubbed on desktop. */
 export const assembleScene: SceneBuilder = (root, mm) => {
   mm.add(mq.desktopMotion, () => {
     const stage = one(root, "[data-stage]")!;

@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 /* Six analogue pieces of a scattered practice, drawn simply. */
 
 const ruled =
-  "bg-white bg-[repeating-linear-gradient(to_bottom,transparent_0,transparent_19px,var(--shifa-border)_19px,var(--shifa-border)_20px)]";
+  "bg-white bg-[repeating-linear-gradient(to_bottom,transparent_0,transparent_19px,var(--clickmed-border)_19px,var(--clickmed-border)_20px)]";
 
 function AgendaPaper() {
   return (
@@ -146,7 +146,7 @@ function UnifiedWindow() {
   );
 }
 
-/** From a scattered practice to a single SHIFA workspace. */
+/** From a scattered practice to a single ClickMed workspace. */
 export function Fragmented() {
   return (
     <section aria-labelledby="fragmented-title" className="relative bg-white">
@@ -200,7 +200,7 @@ export function Fragmented() {
 
             <figure data-unified className="relative z-20 w-full max-w-[720px]">
               <figcaption className="sr-only">
-                Un espace SHIFA unique réunissant le dossier, la consultation, l&apos;ordonnance et le rendez-vous de la patiente.
+                Un espace ClickMed unique réunissant le dossier, la consultation, l&apos;ordonnance et le rendez-vous de la patiente.
               </figcaption>
               <div aria-hidden>
                 <UnifiedWindow />

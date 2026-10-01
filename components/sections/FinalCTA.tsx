@@ -2,6 +2,7 @@ import { Check, FileDown, Moon } from "lucide-react";
 import { MagneticButton } from "@/components/animations/MagneticButton";
 import { ScrollScene } from "@/components/animations/ScrollScene";
 import { TextReveal } from "@/components/animations/TextReveal";
+import { BrandMotif } from "@/components/brand/ClickMedLogo";
 import { Button } from "@/components/ui/Button";
 import { Chapter } from "@/components/ui/Chapter";
 import { Container } from "@/components/ui/Container";
@@ -24,10 +25,10 @@ export function FinalCTA() {
             data-glow
             className="size-[720px] rounded-full bg-[radial-gradient(closest-side,rgba(200,224,74,0.22),rgba(200,224,74,0.06)_55%,transparent)] opacity-70"
           />
-          <div className="absolute top-1/2 left-1/2 size-[460px] -translate-x-1/2 -translate-y-1/2 animate-spin-slow">
-            <span className="absolute inset-[16%] rotate-45 rounded-[72px] border border-white/10" />
-            <span className="absolute inset-[16%] translate-x-[12%] -rotate-12 rounded-[72px] border border-lime/30" />
-          </div>
+          <BrandMotif
+            tone="light"
+            className="absolute top-1/2 left-1/2 size-[520px] -translate-x-1/2 -translate-y-1/2 animate-spin-slow"
+          />
         </div>
 
         {/* Fragments of the day, desktop only */}

@@ -52,7 +52,7 @@ const appointments: Appt[] = [
 ];
 
 const statusStyle: Record<AppointmentStatus, string> = {
-  confirme: "border-l-success bg-[color-mix(in_srgb,var(--shifa-success)_8%,white)]",
+  confirme: "border-l-success bg-[color-mix(in_srgb,var(--clickmed-success)_8%,white)]",
   attente: "border-l-warning bg-warning-bg/70",
   termine: "border-l-info bg-info-bg/50 text-ink-soft",
   annule: "border-l-danger bg-danger-bg text-ink-soft line-through decoration-danger/40",
@@ -103,7 +103,7 @@ function WeekView() {
             className="relative border-l border-line"
             style={{
               height: HOURS * ROW,
-              backgroundImage: "linear-gradient(to bottom, var(--shifa-border) 1px, transparent 1px)",
+              backgroundImage: "linear-gradient(to bottom, var(--clickmed-border) 1px, transparent 1px)",
               backgroundSize: `100% ${ROW}px`,
             }}
           >

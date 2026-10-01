@@ -1,6 +1,6 @@
-# SHIFA — site vitrine
+# ClickMed — site vitrine
 
-Single-page marketing site for SHIFA, built with Next.js (App Router), Tailwind CSS v4, GSAP + ScrollTrigger and Lenis.
+Single-page marketing site for ClickMed, built with Next.js (App Router), Tailwind CSS v4, GSAP + ScrollTrigger and Lenis.
 
 ```bash
 npm install
@@ -35,7 +35,8 @@ The page follows one doctor's day and one patient (Sarra Trabelsi), each section
 - **Copy**: all French text is in `data/content.ts`, `data/features.ts`, `data/navigation.ts`.
 - **Media**: every photo is referenced from `data/media.ts`. Replace a `src` with a local path such as `/images/hero/cabinet.jpg` (file in `public/`) and no component changes. Set `heroVideo` to play a video in the hero. Remove the Unsplash entry in `next.config.ts` and the footer credit once no remote images remain.
 - **Access request link**: `site.accessRequestUrl` in `data/content.ts` is a placeholder (`#contact`). Point it at the app's access-request route.
-- **Design tokens**: `app/globals.css` (`--shifa-*` variables, mapped to Tailwind utilities such as `bg-deep`, `text-ink-soft`, `border-line`). The default Tailwind palette is disabled on purpose.
+- **Logo**: source files are in `ClickMed-logo/`. Web versions (trimmed, resized, plus `-light` versions with the teal turned white for dark backgrounds) are in `public/brand/` and referenced from `brand` in `data/media.ts`. Components: `ClickMedLogo`, `ClickMedMark` and `BrandMotif` in `components/brand/ClickMedLogo.tsx`. `app/icon.png` and `app/apple-icon.png` are generated from the symbol.
+- **Design tokens**: `app/globals.css` (`--clickmed-*` variables, mapped to Tailwind utilities such as `bg-deep`, `text-ink-soft`, `border-line`). The default Tailwind palette is disabled on purpose.
 - **Fonts**: Inter 400/500/600/700 and IBM Plex Mono 400/500 are self-hosted in `app/fonts/` (from Fontsource) and loaded with `next/font/local`.
 
 ## Animation system

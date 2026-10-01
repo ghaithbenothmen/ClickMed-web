@@ -44,7 +44,7 @@ export function HeroVisual() {
       <div data-parallax="product" className="relative lg:ml-auto lg:w-[74%] lg:pt-0">
         <figure data-intro="product" data-cursor="Explorer" className="relative">
           <figcaption className="sr-only">
-            Aperçu du tableau de bord SHIFA : message d&apos;accueil, prochain patient avec son allergie,
+            Aperçu du tableau de bord ClickMed : message d&apos;accueil, prochain patient avec son allergie,
             salle d&apos;attente en direct et agenda du jour.
           </figcaption>
           <div aria-hidden>
@@ -81,7 +81,7 @@ export function HeroVisual() {
               <Sparkles size={16} strokeWidth={2.25} />
             </span>
             <span>
-              <span className="block text-[13px] font-semibold">Assistant SHIFA</span>
+              <span className="block text-[13px] font-semibold">Assistant ClickMed</span>
               <span className="block text-[13px] leading-snug text-white/65">
                 3 hypothèses à examiner pour Sarra Trabelsi
               </span>

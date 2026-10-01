@@ -1,4 +1,4 @@
-import { ShifaLogo } from "@/components/brand/ShifaLogo";
+import { ClickMedLogo } from "@/components/brand/ClickMedLogo";
 import { Container } from "@/components/ui/Container";
 import { footer, site } from "@/data/content";
 import { accessHref, navigation } from "@/data/navigation";
@@ -9,7 +9,7 @@ export function Footer() {
       <Container size="wide" className="border-t border-white/10 py-14">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div className="flex flex-col gap-3">
-            <ShifaLogo tone="light" markSize={32} />
+            <ClickMedLogo tone="light" height={40} />
             <p className="text-[15px] text-white/60">{site.tagline}</p>
           </div>
 
