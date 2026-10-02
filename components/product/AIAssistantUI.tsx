@@ -1,4 +1,4 @@
-import { CircleHelp, ShieldCheck, Sparkles, TriangleAlert } from "lucide-react";
+import { ShieldCheck, Sparkles } from "lucide-react";
 import { MockLabel } from "@/components/product/AppWindow";
 import { LiveDot } from "@/components/ui/LiveDot";
 import { ai } from "@/data/content";
@@ -29,7 +29,6 @@ const hypotheses = [
 ];
 
 const checks = ["Température", "Auscultation", "Évolution des symptômes"];
-const followUps = ["Traitement de première intention ?", "Examens à prescrire ?", "Questions de suivi"];
 
 function Strength({ value }: { value: number }) {
   return (
@@ -63,36 +62,7 @@ export function AIAssistantUI() {
         </span>
       </div>
 
-      <div className="flex flex-col gap-4 p-5">
-        {/* Context read from the record */}
-        <div data-ai-stage="context" className="flex flex-wrap items-center gap-2">
-          <span className="text-[13px] font-semibold text-deep">Sarra Trabelsi</span>
-          <span className="rounded-full bg-soft px-2.5 py-0.5 text-[11px] font-medium text-ink-soft">34 ans</span>
-          <span className="rounded-full bg-soft px-2.5 py-0.5 text-[11px] font-medium text-ink-soft">Asthme dans l&apos;enfance</span>
-          <span className="inline-flex items-center gap-1 rounded-full bg-warning-bg px-2.5 py-0.5 text-[11px] font-semibold text-warning-ink">
-            <TriangleAlert size={11} strokeWidth={2.5} /> Pénicilline
-          </span>
-        </div>
-
-        <div data-ai-stage="clinical" className="grid grid-cols-3 gap-2 rounded-xl bg-soft p-3 text-[11px]">
-          <div className="col-span-3">
-            <span className="text-ink-soft">Motif </span>
-            <span className="font-medium text-ink">Toux et fatigue depuis 4 jours, fièvre rapportée</span>
-          </div>
-          <div>
-            <span className="block text-ink-soft">FC</span>
-            <span className="font-mono text-[13px] font-medium">72 bpm</span>
-          </div>
-          <div>
-            <span className="block text-ink-soft">SpO₂</span>
-            <span className="font-mono text-[13px] font-medium">98 %</span>
-          </div>
-          <div>
-            <span className="block text-ink-soft">Tension</span>
-            <span className="font-mono text-[13px] font-medium">120 / 80</span>
-          </div>
-        </div>
-
+      <div className="flex flex-col gap-5 p-5 sm:p-6">
         {/* Hypotheses */}
         <div className="relative">
           <MockLabel className="mb-2.5">Hypothèses diagnostiques</MockLabel>
@@ -136,34 +106,18 @@ export function AIAssistantUI() {
         </div>
 
         {/* What to check next */}
-        <div data-ai-stage="checks" className="grid gap-3 border-t border-line pt-4 sm:grid-cols-2">
-          <div>
-            <MockLabel className="mb-2">À vérifier</MockLabel>
-            <ul className="space-y-1.5 text-[13px]">
-              {checks.map((c) => (
-                <li key={c} className="flex items-center gap-2">
-                  <span className="size-1.5 rounded-full bg-logo" /> {c}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <MockLabel className="mb-2">Allergies</MockLabel>
-            <p className="flex items-start gap-2 rounded-lg bg-warning-bg px-2.5 py-2 text-[13px] font-medium text-warning-ink">
-              <TriangleAlert size={14} strokeWidth={2.25} className="mt-0.5 shrink-0" />
-              Pénicilline, à prendre en compte avant toute prescription.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-2 sm:col-span-2">
-            {followUps.map((f) => (
-              <span
-                key={f}
-                className="inline-flex items-center gap-1.5 rounded-full border border-line px-2.5 py-1 text-[11px] font-medium text-deep"
+        <div data-ai-stage="checks" className="border-t border-line pt-4">
+          <MockLabel className="mb-2.5">À vérifier</MockLabel>
+          <ul className="flex flex-wrap gap-2">
+            {checks.map((c) => (
+              <li
+                key={c}
+                className="inline-flex items-center gap-2 rounded-full bg-soft px-3 py-1.5 text-[13px] font-medium text-ink"
               >
-                <CircleHelp size={12} strokeWidth={2} /> {f}
-              </span>
+                <span className="size-1.5 rounded-full bg-logo" /> {c}
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
 

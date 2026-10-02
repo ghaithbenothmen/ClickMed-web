@@ -19,23 +19,29 @@ The page follows one doctor's day and one patient (Sarra Trabelsi), each section
 | Time  | Section                  | File                                         |
 | ----- | ------------------------ | -------------------------------------------- |
 | 08:30 | Hero (consultation view) | `components/hero/Hero.tsx`, `product/HeroConsultation.tsx` |
-| —     | How it works (`#comment-ca-fonctionne`), target of the hero CTA | `sections/HowItWorks.tsx` |
 | —     | Statement, scattered practice → one window | `sections/Intro.tsx`, `sections/Fragmented.tsx` |
 | 09:30 | Patient record (`#produit`) | `sections/PatientManagement.tsx`          |
-| 09:32 | Consultation + vital signs | `sections/ConsultationExperience.tsx`      |
+| 09:31 | Consultation history (`#historique`) | `sections/ConsultationHistory.tsx`, `product/HistoryUI.tsx` |
+| 09:32 | Consultation             | `sections/ConsultationExperience.tsx`        |
 | 09:38 | AI assistant (`#ia`)     | `sections/AIConsultation.tsx`                |
 | 09:41 | Prescription             | `sections/Prescription.tsx`                  |
-| 12:30 | Appointments             | `sections/Appointments.tsx`                  |
-| 14:00 | Productivity (Ctrl + K)  | `sections/Productivity.tsx`                  |
 | 17:30 | Features (`#fonctionnalites`) | `sections/FeatureStory.tsx`             |
+| —     | Built with doctors (`#medecins`) | `sections/BuiltWithDoctors.tsx` |
 | 18:00 | Security (`#securite`)   | `sections/Security.tsx`                      |
+| —     | Tutorials (`#tutoriels`), videos in `tutorialVideos` (`data/media.ts`) | `sections/Tutorials.tsx` |
+| —     | How it works / free trial (`#comment-ca-fonctionne`), target of the hero CTA | `sections/HowItWorks.tsx` |
+| —     | Founder doctor offer (`#offre-fondateur`) | `sections/FounderOffer.tsx` |
 | 18:05 | Request access (`#contact`) | `sections/FinalCTA.tsx`                   |
+| —     | Ask us a question (`#question`) | `sections/AskQuestion.tsx`, `forms/QuestionForm.tsx` |
+
+Not shown for now (kept in the codebase, removed from `app/page.tsx`): Appointments (`sections/Appointments.tsx`) and the Ctrl + K section (`sections/Productivity.tsx`). The Ctrl + K palette itself still works as site navigation.
 
 ## Where things live
 
 - **Copy**: all French text is in `data/content.ts`, `data/features.ts`, `data/navigation.ts`.
 - **Media**: every photo is referenced from `data/media.ts`. Replace a `src` with a local path such as `/images/hero/cabinet.jpg` (file in `public/`) and no component changes. Remove the Unsplash entry in `next.config.ts` and the footer credit once no remote images remain.
-- **Access request link**: `site.accessRequestUrl` in `data/content.ts` is a placeholder (`#contact`). Point it at the app's access-request route.
+- **CTA links**: `site.signupUrl`, `site.founderRequestUrl` and `site.partnerUrl` in `data/content.ts` open the question form with a subject attached (`?sujet=essai|fondateur|partenaire#question`). Replace `signupUrl` with the app's sign-up route once it exists. `site.accessRequestUrl` / `accessHref` lead to the final CTA (`#contact`).
+- **Question form**: validated in `lib/question.ts` (client and server) and sent by the server action `app/actions/question.ts`, which POSTs JSON to `QUESTION_WEBHOOK_URL` (see `.env.example`). Without that variable nothing is delivered and the visitor sees an error saying so. Running it requires a Node server (`next start` or a platform such as Vercel), not a static export.
 - **Logo**: source files are in `ClickMed-logo/`. Web versions (trimmed, resized, plus `-light` versions with the teal turned white for dark backgrounds) are in `public/brand/` and referenced from `brand` in `data/media.ts`. Components: `ClickMedLogo`, `ClickMedMark` and `BrandMotif` in `components/brand/ClickMedLogo.tsx`. `app/icon.png` and `app/apple-icon.png` are generated from the symbol.
 - **Design tokens**: `app/globals.css` (`--clickmed-*` variables, mapped to Tailwind utilities such as `bg-deep`, `text-ink-soft`, `border-line`). The default Tailwind palette is disabled on purpose.
 - **Fonts**: Inter 400/500/600/700 and IBM Plex Mono 400/500 are self-hosted in `app/fonts/` (from Fontsource) and loaded with `next/font/local`.

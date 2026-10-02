@@ -7,6 +7,7 @@ import {
   assembleScene,
   calendarScene,
   consultationScene,
+  historyScene,
   paletteScene,
   patientScene,
   prescriptionScene,
@@ -17,6 +18,7 @@ import { featuresScene, finaleScene, flowScene, statementScene } from "@/animati
 const scenes = {
   assemble: assembleScene,
   patient: patientScene,
+  history: historyScene,
   consultation: consultationScene,
   ai: aiScene,
   prescription: prescriptionScene,

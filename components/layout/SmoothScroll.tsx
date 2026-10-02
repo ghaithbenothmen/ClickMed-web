@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 import { gsap, ScrollTrigger } from "@/animations/gsap";
-import { scrollToHash, setLenis } from "@/lib/scroll";
+import { followQueryLink, scrollToHash, setLenis } from "@/lib/scroll";
 
 /**
  * Lenis smooth scrolling, driven by the GSAP ticker so ScrollTrigger and
@@ -39,12 +39,14 @@ export function SmoothScroll() {
 
     const onClick = (e: MouseEvent) => {
       if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
-      const link = e.target instanceof Element ? e.target.closest<HTMLAnchorElement>('a[href^="#"]') : null;
+      const link =
+        e.target instanceof Element ? e.target.closest<HTMLAnchorElement>('a[href^="#"], a[href^="?"]') : null;
       if (!link) return;
-      const hash = link.getAttribute("href");
-      if (!hash || hash === "#") return;
+      const href = link.getAttribute("href");
+      if (!href || href === "#") return;
       e.preventDefault();
-      scrollToHash(hash);
+      if (href.startsWith("?")) followQueryLink(href);
+      else scrollToHash(href);
     };
     document.addEventListener("click", onClick);
 

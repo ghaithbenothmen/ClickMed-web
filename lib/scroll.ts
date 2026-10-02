@@ -17,6 +17,20 @@ export function getLenis() {
 
 const NAV_OFFSET = -64;
 
+/** Fired after an in-page link changed the query string (e.g. ?sujet=partenaire#question). */
+export const PARAMS_EVENT = "clickmed:params";
+
+/**
+ * In-page link with a query, like "?sujet=partenaire#question": update the URL
+ * without reloading, tell listeners, then scroll to the hash.
+ */
+export function followQueryLink(href: string) {
+  const url = new URL(href, window.location.href);
+  history.replaceState(null, "", url.pathname + url.search + url.hash);
+  window.dispatchEvent(new Event(PARAMS_EVENT));
+  if (url.hash) scrollToHash(url.hash);
+}
+
 export function scrollToHash(hash: string) {
   const id = hash.replace(/^#/, "");
   const target = id === "top" ? document.body : document.getElementById(id);
@@ -43,5 +57,6 @@ export function scrollToHash(hash: string) {
     if (!target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
     target.focus({ preventScroll: true });
   }
-  history.replaceState(null, "", id === "top" ? window.location.pathname : `#${id}`);
+  const { pathname, search } = window.location;
+  history.replaceState(null, "", id === "top" ? pathname + search : `${pathname}${search}#${id}`);
 }

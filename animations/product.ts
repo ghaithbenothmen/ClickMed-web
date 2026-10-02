@@ -35,30 +35,6 @@ export function typeInto(tl: gsap.core.Timeline, el: HTMLElement | null, positio
   };
 }
 
-/** Counts every [data-count] from 0 to its data-value. Returns a restore function. */
-function countUp(tl: gsap.core.Timeline, els: HTMLElement[], position: gsap.Position) {
-  const finals = els.map((el) => el.textContent ?? "");
-  els.forEach((el, i) => {
-    const target = Number(el.dataset.value);
-    const decimals = Number(el.dataset.decimals ?? 0);
-    const proxy = { v: 0 };
-    el.textContent = (0).toFixed(decimals);
-    tl.to(
-      proxy,
-      {
-        v: target,
-        duration: 1.2,
-        ease: "power2.out",
-        onUpdate: () => {
-          el.textContent = proxy.v.toFixed(decimals);
-        },
-      },
-      typeof position === "number" ? position + i * 0.06 : position,
-    );
-  });
-  return () => els.forEach((el, i) => (el.textContent = finals[i]));
-}
-
 const playOnEnter = (trigger: Element, start = "top 72%"): ScrollTrigger.Vars => ({
   trigger,
   start,
@@ -132,36 +108,35 @@ export const assembleScene: SceneBuilder = (root, mm) => {
   });
 };
 
-/** Search → match → select → profile expands. */
+/** The patient record assembles: identity, then the essentials. */
 export const patientScene: SceneBuilder = (root, mm) => {
   mm.add(mq.motion, () => {
-    const typed = one(root, "[data-typed]");
-    const others = all(root, "[data-row]:not([data-row-match])");
-    const target = one(root, "[data-row-target]");
-    const pointer = one(root, "[data-pointer]");
-    const profile = one(root, "[data-profile]");
-    const items = all(root, "[data-profile-item]");
-
-    gsap.set(profile, { clipPath: "inset(0% 0% 100% 0% round 16px)", autoAlpha: 0 });
-    gsap.set(pointer, { autoAlpha: 0, x: 120, y: 60 });
-    gsap.set(others, { opacity: 1 });
-
-    const tl = gsap.timeline({ scrollTrigger: playOnEnter(root) });
-    const restore = typeInto(tl, typed, 0.3, 6);
-    tl.to(others, { opacity: 0.28, duration: 0.4 }, ">-0.1")
-      .to(pointer, { autoAlpha: 1, duration: 0.2 }, "<")
-      .to(pointer, { x: 0, y: 0, duration: 0.7, ease: motion.ease.inOut }, "<")
-      .to(target, { backgroundColor: "rgba(200,224,74,0.22)", duration: 0.25 }, ">-0.05")
-      .to(pointer, { scale: 0.85, duration: 0.1, yoyo: true, repeat: 1 }, "<")
-      .to(profile, { clipPath: "inset(0% 0% 0% 0% round 16px)", autoAlpha: 1, duration: 0.8, ease: "expo.inOut" }, "+=0.15")
-      .to(pointer, { autoAlpha: 0, duration: 0.2 }, "<")
-      .from(items, { y: 14, autoAlpha: 0, duration: 0.6, stagger: 0.06, ease: motion.ease.out }, "-=0.35");
-
-    return restore;
+    gsap.from(all(root, "[data-profile-item]"), {
+      y: 16,
+      autoAlpha: 0,
+      duration: 0.6,
+      stagger: 0.1,
+      ease: motion.ease.out,
+      scrollTrigger: playOnEnter(root),
+    });
   });
 };
 
-/** Motif typed, autosave cycling, vitals counting in. */
+/** Past consultations: the timeline draws, the last visit opens, the details land. */
+export const historyScene: SceneBuilder = (root, mm) => {
+  mm.add(mq.motion, () => {
+    const tl = gsap.timeline({ scrollTrigger: playOnEnter(root) });
+    tl.fromTo(
+      one(root, "[data-history-line]"),
+      { scaleY: 0 },
+      { scaleY: 1, duration: 0.9, ease: motion.ease.inOut },
+    )
+      .from(all(root, "[data-history-item]"), { x: -12, autoAlpha: 0, duration: 0.5, stagger: 0.12, ease: motion.ease.out }, 0.1)
+      .from(all(root, "[data-history-detail]"), { y: 10, autoAlpha: 0, duration: 0.45, stagger: 0.1, ease: motion.ease.out }, ">-0.2");
+  });
+};
+
+/** Fields land in reasoning order, motif and exam type themselves, autosave confirms. */
 export const consultationScene: SceneBuilder = (root, mm) => {
   mm.add(mq.motion, () => {
     const saving = one(root, "[data-saving]");
@@ -177,7 +152,6 @@ export const consultationScene: SceneBuilder = (root, mm) => {
     tl.from(fields, { y: 18, autoAlpha: 0, duration: 0.6, stagger: 0.08, ease: motion.ease.out }, 0);
     const restoreMotif = typeInto(tl, one(root, "[data-typed='motif']"), 0.5, 34);
     const restoreExam = typeInto(tl, one(root, "[data-typed='exam']"), ">0.15", 40);
-    const restoreCounts = countUp(tl, all(root, "[data-count]"), 0.6);
     tl.from(chips, { scale: 0.8, autoAlpha: 0, duration: 0.4, stagger: 0.1, ease: "back.out(2)" }, ">0.1")
       .to(saving, { autoAlpha: 0, duration: 0.25 }, ">0.2")
       .to(saved, { autoAlpha: 1, duration: 0.25 }, "<")
@@ -186,53 +160,34 @@ export const consultationScene: SceneBuilder = (root, mm) => {
     return () => {
       restoreMotif();
       restoreExam();
-      restoreCounts();
     };
   });
 };
 
-/** The AI panel builds itself as the doctor scrolls: context → analysis → hypotheses → checks. */
+/** The AI panel: a short read of the record, then hypotheses, then what to check. */
 export const aiScene: SceneBuilder = (root, mm) => {
   const build = (tl: gsap.core.Timeline) => {
-    const steps = all(root, "[data-step]");
-    const rail = one(root, "[data-step-rail]");
-    const stage = (name: string) => one(root, `[data-ai-stage='${name}']`);
     const hypos = all(root, "[data-ai-hypo]");
     const bars = all(root, "[data-ai-bar]");
+    const checks = one(root, "[data-ai-stage='checks']");
     const processing = one(root, "[data-ai-processing]");
     const statusBusy = one(root, "[data-ai-status='busy']");
     const statusDone = one(root, "[data-ai-status='done']");
 
-    gsap.set(steps, { opacity: 0.35 });
-    gsap.set(rail, { scaleY: 0, transformOrigin: "top" });
-    gsap.set([stage("context"), stage("clinical"), stage("checks")], { autoAlpha: 0, y: 18 });
     gsap.set(hypos, { autoAlpha: 0, y: 18 });
     gsap.set(bars, { scaleX: 0, transformOrigin: "left" });
-    gsap.set(processing, { autoAlpha: 0 });
+    gsap.set(checks, { autoAlpha: 0, y: 18 });
+    gsap.set(processing, { autoAlpha: 1 });
     gsap.set(statusDone, { autoAlpha: 0 });
     gsap.set(statusBusy, { autoAlpha: 1 });
 
-    const step = (i: number, at: number) => {
-      tl.to(steps[i], { opacity: 1, duration: 0.3 }, at).to(
-        rail,
-        { scaleY: (i + 1) / steps.length, duration: 0.4, ease: "power1.inOut" },
-        at,
-      );
-    };
-
-    step(0, 0);
-    tl.to(stage("context"), { autoAlpha: 1, y: 0, duration: 0.5 }, 0.05);
-    step(1, 0.7);
-    tl.to(stage("clinical"), { autoAlpha: 1, y: 0, duration: 0.5 }, 0.75);
-    step(2, 1.4);
-    tl.to(processing, { autoAlpha: 1, duration: 0.3 }, 1.45).to(processing, { autoAlpha: 0, duration: 0.3 }, 2.1);
-    step(3, 2.2);
-    tl.to(hypos, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.18 }, 2.2)
-      .to(bars, { scaleX: 1, duration: 0.6, stagger: 0.18, ease: "power2.out" }, 2.35)
-      .to(statusBusy, { autoAlpha: 0, duration: 0.2 }, 2.3)
-      .to(statusDone, { autoAlpha: 1, duration: 0.2 }, 2.4);
-    step(4, 3.1);
-    tl.to(stage("checks"), { autoAlpha: 1, y: 0, duration: 0.5 }, 3.15).to({}, { duration: 0.5 });
+    tl.to(processing, { autoAlpha: 0, duration: 0.3 }, 0.5)
+      .to(hypos, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.18 }, 0.55)
+      .to(bars, { scaleX: 1, duration: 0.6, stagger: 0.18, ease: "power2.out" }, 0.7)
+      .to(statusBusy, { autoAlpha: 0, duration: 0.2 }, 0.65)
+      .to(statusDone, { autoAlpha: 1, duration: 0.2 }, 0.75)
+      .to(checks, { autoAlpha: 1, y: 0, duration: 0.5 }, 1.4)
+      .to({}, { duration: 0.4 });
   };
 
   mm.add(mq.desktopMotion, () => {
@@ -241,7 +196,7 @@ export const aiScene: SceneBuilder = (root, mm) => {
       scrollTrigger: {
         trigger: root,
         start: "top top",
-        end: "+=240%",
+        end: "+=120%",
         pin: true,
         scrub: 0.6,
         anticipatePin: 1,
@@ -256,7 +211,6 @@ export const aiScene: SceneBuilder = (root, mm) => {
       scrollTrigger: playOnEnter(one(root, "[data-ai-panel]") ?? root, "top 75%"),
     });
     build(tl);
-    tl.timeScale(1.6);
   });
 };
 

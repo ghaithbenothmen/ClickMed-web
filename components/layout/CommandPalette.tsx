@@ -11,16 +11,18 @@ export const OPEN_PALETTE_EVENT = "clickmed:open-palette";
 
 const destinations = [
   { label: "Accueil", hint: "Le cabinet médical, simplifié.", href: "#top" },
-  { label: "Comment ça fonctionne", hint: "Les quatre étapes, de l'accès à l'ordonnance", href: "#comment-ca-fonctionne" },
   { label: "Dossier patient", hint: "Recherche, antécédents, allergies", href: "#produit" },
+  { label: "Historique des consultations", hint: "Ce qui a été fait, prescrit et observé", href: "#historique" },
   { label: "Consultation", hint: "Motif, examen, constantes, autosave", href: "#consultation" },
   { label: "Assistant IA", hint: "Hypothèses et points à vérifier", href: "#ia" },
   { label: "Ordonnance", hint: "Modèles, alerte allergies, PDF", href: "#ordonnance" },
-  { label: "Rendez-vous", hint: "Jour, semaine, mois", href: "#planning" },
-  { label: "Productivité", hint: "Ctrl + K, autosave", href: "#productivite" },
   { label: "Fonctionnalités", hint: "Toute la journée en un outil", href: "#fonctionnalites" },
   { label: "Sécurité", hint: "Comptes validés, session protégée", href: "#securite" },
+  { label: "Tutoriels", hint: "L'essentiel en quelques minutes", href: "#tutoriels" },
+  { label: "Comment ça fonctionne", hint: "Tester ClickMed gratuitement", href: "#comment-ca-fonctionne" },
+  { label: "Offre médecin fondateur", hint: "15 places disponibles", href: "#offre-fondateur" },
   { label: "Demander un accès médecin", hint: "Rejoindre ClickMed", href: "#contact" },
+  { label: "Poser une question", hint: "L'équipe ClickMed vous répond", href: "#question" },
 ] as const;
 
 const normalize = (s: string) =>
@@ -31,7 +33,7 @@ const normalize = (s: string) =>
 
 /**
  * A working Ctrl + K palette for navigating this page. It mirrors the one in
- * the ClickMed app and makes the productivity section tangible.
+ * the ClickMed app.
  */
 export function CommandPalette() {
   const [open, setOpen] = useState(false);

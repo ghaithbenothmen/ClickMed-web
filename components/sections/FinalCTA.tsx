@@ -57,13 +57,13 @@ export function FinalCTA() {
             className="max-w-[14ch] text-display font-semibold text-white"
           />
           <p className="max-w-[30rem] text-[18px] leading-[1.55] text-white/70 sm:text-[22px]">{finalCta.body}</p>
-          <div className="flex flex-col gap-3 pt-2 sm:flex-row">
-            <MagneticButton>
-              <Button href={site.accessRequestUrl} variant="lime" size="lg" className="w-full sm:w-auto">
+          <div className="flex w-full flex-col gap-3 pt-2 sm:w-auto sm:flex-row">
+            <MagneticButton className="w-full sm:w-auto">
+              <Button href={site.signupUrl} variant="lime" size="lg" className="w-full sm:min-w-56">
                 {finalCta.primaryCta}
               </Button>
             </MagneticButton>
-            <Button href="#produit" variant="outline-light" size="lg">
+            <Button href={site.partnerUrl} variant="outline-light" size="lg" className="w-full sm:w-auto">
               {finalCta.secondaryCta}
             </Button>
           </div>

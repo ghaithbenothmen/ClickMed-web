@@ -59,6 +59,19 @@ export const media = {
 export const heroVideo: MediaVideo | null = null;
 
 /**
+ * Tutorial videos, keyed by the ids in `tutorials.items` (data/content.ts).
+ * `null` renders a clean placeholder. To publish one, drop the file in
+ * /public/videos/tutoriels and set e.g.
+ *   "creer-patient": { src: "/videos/tutoriels/creer-patient.mp4", poster: "/images/tutoriels/creer-patient.jpg", type: "video/mp4" }
+ */
+export const tutorialVideos: Record<string, MediaVideo | null> = {
+  "creer-patient": null,
+  "demarrer-consultation": null,
+  "consulter-historique": null,
+  "prescrire-terminer": null,
+};
+
+/**
  * ClickMed brand artwork, generated from /ClickMed-logo (trimmed, web-sized).
  * "-light" variants have the teal turned white for dark backgrounds.
  */

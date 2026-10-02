@@ -10,12 +10,22 @@ export const site = {
   description:
     "Patients, rendez-vous, consultations et ordonnances réunis dans un seul espace de travail, avec une IA qui aide le médecin à réfléchir, sans jamais décider à sa place.",
   /** Set NEXT_PUBLIC_SITE_URL in production so Open Graph URLs are absolute. */
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   /**
    * Where "Demander un accès médecin" leads from the final section.
    * Replace with the ClickMed app access-request route once it is public.
    */
   accessRequestUrl: "#contact",
+  /**
+   * Free-trial sign-up ("Tester / Commencer gratuitement"). No sign-up flow exists yet,
+   * so it opens the question form with the trial subject attached. Replace with the
+   * app's sign-up route once it is public.
+   */
+  signupUrl: "?sujet=essai#question",
+  /** Founder doctor offer: the question form, with the founder subject attached. */
+  founderRequestUrl: "?sujet=fondateur#question",
+  /** "Devenir partenaire": no partner flow exists, so the question form with the partner subject. */
+  partnerUrl: "?sujet=partenaire#question",
 } as const;
 
 export const hero = {
@@ -36,37 +46,73 @@ export const hero = {
   aiNote: "Une IA vous aide à réfléchir. La décision reste toujours entre les mains du médecin.",
 } as const;
 
+/** "Comment ça fonctionne": getting started, after the tutorials. Target of the hero CTA. */
 export const howItWorks = {
-  title: "Comment ça fonctionne",
-  body: "Quatre étapes, de la demande d'accès à l'ordonnance. Rien à installer, rien à ressaisir.",
+  title: "Commencez en quelques étapes.",
   steps: [
+    { title: "Créez votre compte", text: "Inscrivez-vous gratuitement et accédez à ClickMed." },
+    { title: "Testez ClickMed", text: "Créez jusqu'à 10 patients et utilisez ClickMed dans vos consultations." },
     {
-      title: "Demandez votre accès",
-      text: "L'administrateur crée et valide votre compte. Vous recevez un identifiant médecin personnel et un mot de passe temporaire.",
-      href: "#securite",
-      link: "Comptes et sécurité",
-    },
-    {
-      title: "Retrouvez votre patient",
-      text: "Une recherche par nom, date de naissance ou téléphone ouvre le dossier complet.",
-      href: "#produit",
-      link: "Le dossier patient",
-    },
-    {
-      title: "Menez la consultation",
-      text: "Motif, examen, constantes et diagnostics, enregistrés automatiquement. L'IA propose des pistes, vous décidez.",
-      href: "#consultation",
-      link: "La consultation",
-    },
-    {
-      title: "Prescrivez et terminez",
-      text: "Une ordonnance depuis un modèle, en PDF ou imprimée, puis Ctrl + Entrée pour clôturer.",
-      href: "#ordonnance",
-      link: "L'ordonnance",
+      title: "Décidez par vous-même",
+      text: "Découvrez si ClickMed correspond à votre façon de travailler avant de vous engager.",
     },
   ],
-  cta: "Demander un accès médecin",
+  reassurance: "Aucun engagement pour tester ClickMed.",
+  cta: "Tester ClickMed gratuitement",
   ctaNote: "Sans engagement",
+} as const;
+
+export const tutorials = {
+  title: "Découvrez ClickMed en quelques minutes.",
+  body: "Des tutoriels courts pour vous montrer l'essentiel, sans formation compliquée.",
+  /** `id` matches the video entry in data/media.ts (tutorialVideos). */
+  items: [
+    { id: "creer-patient", title: "Créer un patient", text: "Ajoutez un nouveau patient en quelques étapes." },
+    {
+      id: "demarrer-consultation",
+      title: "Démarrer une consultation",
+      text: "Retrouvez le patient et commencez sa consultation rapidement.",
+    },
+    {
+      id: "consulter-historique",
+      title: "Consulter l'historique",
+      text: "Retrouvez les consultations et informations précédentes du patient.",
+    },
+    {
+      id: "prescrire-terminer",
+      title: "Prescrire et terminer une consultation",
+      text: "Documentez la consultation et conservez toutes les informations pour la prochaine fois.",
+    },
+  ],
+  placeholder: "Vidéo bientôt disponible",
+  cta: "Commencer gratuitement",
+  ctaNote: "Sans engagement",
+} as const;
+
+export const founderOffer = {
+  badge: "OFFRE MÉDECIN FONDATEUR",
+  title: "Rejoignez les 15 premiers médecins fondateurs de ClickMed.",
+  positioning: "Vous ne rejoignez pas seulement ClickMed. Vous participez à sa construction.",
+  seats: 15,
+  seatsLabel: "places",
+  price: "299 DT",
+  priceLabel: "Offre médecin fondateur",
+  benefits: [
+    { title: "1 an de ClickMed", text: "Accès à ClickMed pendant 12 mois." },
+    { title: "50 % de réduction à vie", text: "Une réduction de 50 % à vie sur les futurs abonnements." },
+    {
+      title: "Accompagnement individuel",
+      text: "Une session personnalisée pour apprendre à utiliser ClickMed et l'adapter à votre façon de travailler.",
+    },
+    { title: "Support prioritaire", text: "Une assistance privilégiée lorsque vous avez besoin d'aide." },
+    { title: "Accès anticipé aux évolutions", text: "Découvrez les nouvelles fonctionnalités en priorité." },
+    {
+      title: "Participation à l'évolution de ClickMed",
+      text: "Votre retour en tant que médecin fondateur contribue directement à l'évolution du produit.",
+    },
+  ],
+  cta: "Devenir médecin fondateur",
+  reassurance: "Seulement 15 places disponibles.",
 } as const;
 
 export const intro = {
@@ -76,7 +122,7 @@ export const intro = {
   fragmentedBody:
     "Un agenda d'un côté, les dossiers de l'autre, les ordonnances sur un carnet et les résultats dans un tiroir.",
   unifiedTitle: "Avec ClickMed, tout tient dans un seul espace.",
-  unifiedBody: "Le patient, sa consultation, son ordonnance et son prochain rendez-vous, au même endroit.",
+  unifiedBody: "Le patient, son historique, sa consultation et son ordonnance, au même endroit.",
   fragments: [
     "Agenda papier",
     "Carnet d'ordonnances",
@@ -90,18 +136,19 @@ export const intro = {
 export const patients = {
   chapter: { time: "09:30", label: "Arrivée de la patiente" },
   title: "Le dossier patient, sans détour.",
-  body: "Retrouvez un patient en quelques lettres et ouvrez un dossier complet : identité, antécédents, allergies, traitements et historique des consultations.",
-  points: [
-    { title: "Recherche instantanée", text: "Par nom, date de naissance ou téléphone." },
-    { title: "Tri et filtres", text: "La liste s'organise comme vous travaillez." },
-    { title: "Création rapide", text: "Un nouveau patient en quelques champs." },
-  ],
+  body: "Identité, antécédents, allergies et traitements en cours : l'essentiel de votre patient, lisible d'un coup d'œil.",
+} as const;
+
+export const history = {
+  chapter: { time: "09:31", label: "Avant la consultation" },
+  title: "Vous ne vous souvenez plus de la dernière consultation ? Plus besoin.",
+  body: "Retrouvez en quelques secondes ce qui a été fait, prescrit et observé lors des consultations précédentes.",
 } as const;
 
 export const consultation = {
   chapter: { time: "09:32", label: "Consultation" },
-  title: "Une consultation pensée autour du médecin.",
-  body: "Motif, examen clinique, diagnostics et notes s'enchaînent dans l'ordre de votre raisonnement. Les constantes et l'historique restent à portée de regard.",
+  title: "Vous consultez. ClickMed suit.",
+  body: "Pas besoin de changer votre façon de travailler. Motif, examen clinique, diagnostic et notes s'enchaînent dans l'ordre de votre raisonnement.",
   autosave: "Enregistré automatiquement",
   saving: "Enregistrement…",
   finish: "Terminer la consultation",
@@ -112,13 +159,6 @@ export const ai = {
   title: "Une IA qui aide à réfléchir. Jamais à décider.",
   body: "ClickMed analyse les informations déjà présentes dans le dossier et propose des pistes de réflexion directement dans la consultation.",
   disclaimer: "Aide à la décision uniquement. La validation finale revient toujours au médecin.",
-  steps: [
-    { title: "Données patient", text: "Âge, antécédents, allergies et traitements en cours." },
-    { title: "Contexte clinique", text: "Motif, examen et constantes de la consultation." },
-    { title: "Analyse", text: "L'assistant relit le dossier, sans rien vous demander de ressaisir." },
-    { title: "Hypothèses", text: "Jusqu'à trois pistes, classées par probabilité, expliquées en une ligne." },
-    { title: "Points à vérifier", text: "Examens, questions de suivi et vigilance sur les allergies." },
-  ],
 } as const;
 
 export const prescription = {
@@ -128,16 +168,18 @@ export const prescription = {
   points: ["Modèles d'ordonnance", "Alerte allergies", "Impression", "Export PDF"],
 } as const;
 
+/** Not rendered on the homepage for now (section removed from app/page.tsx). */
 export const appointments = {
   chapter: { time: "12:30", label: "Planning" },
   title: "Votre journée, en un coup d'œil.",
   body: "Passez du jour à la semaine ou au mois, créez un rendez-vous en un geste et ouvrez la consultation directement depuis l'agenda.",
 } as const;
 
+/** Ctrl + K section. Not rendered on the homepage for now (removed from app/page.tsx). */
 export const productivity = {
   chapter: { time: "14:00", label: "L'après-midi file" },
-  title: "Pensé pour aller vite.",
-  body: "Chaque action courante est à une touche de distance. Rien ne se perd, rien ne vous ralentit.",
+  title: "Vous cherchez quelque chose ? Tapez. C'est trouvé.",
+  body: "Avec Ctrl + K, recherchez directement ce dont vous avez besoin et accédez-y sans parcourir plusieurs pages.",
   tryIt: "Essayez Ctrl + K sur cette page",
   concepts: [
     { title: "Tout retrouver rapidement", text: "Un patient, un rendez-vous, une page : tapez, c'est ouvert." },
@@ -148,14 +190,30 @@ export const productivity = {
 
 export const features = {
   chapter: { time: "17:30", label: "Bilan de la journée" },
-  title: "Une journée entière, dans un seul outil.",
+  title: "Une consultation. Un seul espace.",
   body: "Cinq espaces qui se parlent, pour que chaque information saisie serve partout.",
+} as const;
+
+/** Authority section, right after the feature summary. Figures are provided by ClickMed. */
+export const builtWithDoctors = {
+  title: "Conçu avec des médecins, pour leur façon de travailler.",
+  paragraphs: [
+    "Plus de 100 médecins ont contribué à la réflexion et à l'évolution de ClickMed.",
+    "Leur objectif était simple : créer un outil qui s'adapte à la réalité d'une consultation.",
+  ],
+  conclusion: "Vous n'avez pas à changer votre façon de travailler. ClickMed l'améliore.",
+  stat: {
+    value: "100+",
+    label: "médecins",
+    caption: "ont contribué à la réflexion et à l'évolution de ClickMed.",
+  },
 } as const;
 
 export const security = {
   chapter: { time: "18:00", label: "Fermeture de session" },
   title: "Vos données médicales méritent une attention particulière.",
   body: "Les accès sont créés et validés par l'administrateur. Chaque médecin dispose d'un compte personnel et d'une session protégée.",
+  /** Onboarding flow: no longer shown in the security section, kept for reuse. */
   flowTitle: "Comment un médecin rejoint ClickMed",
   flow: [
     { title: "Demande d'accès", text: "Le médecin envoie sa demande." },
@@ -167,10 +225,45 @@ export const security = {
 
 export const finalCta = {
   chapter: { time: "18:05", label: "Fin de journée" },
-  title: "Prêt à simplifier votre cabinet ?",
+  title: "Prêt à simplifier votre cabinet ?",
   body: "Demandez votre accès médecin et découvrez ClickMed.",
-  primaryCta: "Demander un accès médecin",
-  secondaryCta: "Découvrir le produit",
+  primaryCta: "Tester gratuitement",
+  secondaryCta: "Devenir partenaire",
+} as const;
+
+export const askQuestion = {
+  title: "Une question ? Posez-la-nous.",
+  body: "Écrivez-nous, notre équipe vous recontacte.",
+  outcomesTitle: "Selon votre question, nous vous répondons avec :",
+  outcomes: [
+    { title: "Une réponse de notre FAQ", text: "Quand votre question est générale." },
+    { title: "Plus d'informations sur ClickMed", text: "Si vous envisagez de l'utiliser dans votre cabinet." },
+    { title: "Un échange direct", text: "Quand votre situation demande une réponse personnelle." },
+  ],
+  form: {
+    title: "Formulaire de question",
+    intentLabel: "Sujet :",
+    intentRemove: "Retirer le sujet",
+    name: "Nom complet",
+    required: "obligatoire",
+    contactLegend: "Comment vous recontacter ?",
+    contactHint: "Téléphone ou e-mail : au moins l'un des deux.",
+    phone: "Téléphone",
+    email: "Adresse e-mail",
+    question: "Votre question",
+    questionPlaceholder: "Par exemple : comment importer mes dossiers patients existants ?",
+    privacy: "Vos coordonnées servent uniquement à vous répondre.",
+    submit: "Envoyer ma question",
+    submitting: "Envoi en cours…",
+    success: "Merci. Votre question a bien été envoyée. Notre équipe vous répondra prochainement.",
+    another: "Poser une autre question",
+    errorNotConfigured:
+      "Votre question n'a pas pu être envoyée : l'envoi n'est pas encore activé sur ce site. Vos informations sont conservées.",
+    errorFailed:
+      "Votre question n'a pas pu être envoyée. Réessayez dans quelques instants : vos informations sont conservées.",
+    errorSummary: (n: number) =>
+      n === 1 ? "Le formulaire contient 1 erreur." : `Le formulaire contient ${n} erreurs.`,
+  },
 } as const;
 
 export const footer = {

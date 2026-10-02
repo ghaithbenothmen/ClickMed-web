@@ -1,4 +1,4 @@
-import { CalendarDays, FileText, Stethoscope, UserRound } from "lucide-react";
+import { FileText, History, Stethoscope, UserRound } from "lucide-react";
 import { ScrollScene } from "@/components/animations/ScrollScene";
 import { AppWindow, MockLabel } from "@/components/product/AppWindow";
 import { Container } from "@/components/ui/Container";
@@ -107,7 +107,7 @@ function UnifiedWindow() {
     { icon: UserRound, title: "Dossier", line: "Sarra Trabelsi, 34 ans", sub: "⚠ Pénicilline" },
     { icon: Stethoscope, title: "Consultation", line: "Toux et fatigue, 4 jours", sub: "Enregistré automatiquement" },
     { icon: FileText, title: "Ordonnance", line: "Modèle : infection respiratoire", sub: "PDF prêt" },
-    { icon: CalendarDays, title: "Rendez-vous", line: "Contrôle jeudi, 09:30", sub: "Confirmé" },
+    { icon: History, title: "Historique", line: "Dernière visite : 14/02, angine", sub: "Paracétamol 3 jours" },
   ];
   return (
     <AppWindow active="dashboard" bodyClassName="p-4">
@@ -132,7 +132,7 @@ function UnifiedWindow() {
             ["09:30", "Arrivée"],
             ["09:32", "Consultation"],
             ["09:41", "Ordonnance"],
-            ["Jeudi", "Contrôle"],
+            ["09:44", "Terminée"],
           ].map(([time, label], i) => (
             <li key={label} className="flex flex-col gap-1.5">
               <span className={cn("h-1 rounded-full", i < 3 ? "bg-deep" : "bg-lime")} />
@@ -200,7 +200,7 @@ export function Fragmented() {
 
             <figure data-unified className="relative z-20 w-full max-w-[720px]">
               <figcaption className="sr-only">
-                Un espace ClickMed unique réunissant le dossier, la consultation, l&apos;ordonnance et le rendez-vous de la patiente.
+                Un espace ClickMed unique réunissant le dossier, la consultation, l&apos;historique et l&apos;ordonnance de la patiente.
               </figcaption>
               <div aria-hidden>
                 <UnifiedWindow />
