@@ -18,15 +18,17 @@ type ClickMedLogoProps = {
 /** Horizontal ClickMed lockup: symbol + wordmark. */
 export function ClickMedLogo({ height = 34, tone = "dark", className, priority, alt = "ClickMed" }: ClickMedLogoProps) {
   const asset = tone === "dark" ? brand.logo : brand.logoLight;
+  // Both dimensions are set explicitly (rounded) so the rendered size matches the attributes.
+  const width = Math.round((asset.width / asset.height) * height);
   return (
     <Image
       src={asset.src}
       alt={alt}
-      width={Math.round((asset.width / asset.height) * height)}
+      width={width}
       height={height}
       priority={priority}
       className={cn("select-none", className)}
-      style={{ width: "auto", height }}
+      style={{ width, height }}
     />
   );
 }

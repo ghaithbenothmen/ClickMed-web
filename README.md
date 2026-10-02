@@ -18,7 +18,8 @@ The page follows one doctor's day and one patient (Sarra Trabelsi), each section
 
 | Time  | Section                  | File                                         |
 | ----- | ------------------------ | -------------------------------------------- |
-| 08:30 | Hero                     | `components/hero/Hero.tsx`                   |
+| 08:30 | Hero (consultation view) | `components/hero/Hero.tsx`, `product/HeroConsultation.tsx` |
+| —     | How it works (`#comment-ca-fonctionne`), target of the hero CTA | `sections/HowItWorks.tsx` |
 | —     | Statement, scattered practice → one window | `sections/Intro.tsx`, `sections/Fragmented.tsx` |
 | 09:30 | Patient record (`#produit`) | `sections/PatientManagement.tsx`          |
 | 09:32 | Consultation + vital signs | `sections/ConsultationExperience.tsx`      |
@@ -33,7 +34,7 @@ The page follows one doctor's day and one patient (Sarra Trabelsi), each section
 ## Where things live
 
 - **Copy**: all French text is in `data/content.ts`, `data/features.ts`, `data/navigation.ts`.
-- **Media**: every photo is referenced from `data/media.ts`. Replace a `src` with a local path such as `/images/hero/cabinet.jpg` (file in `public/`) and no component changes. Set `heroVideo` to play a video in the hero. Remove the Unsplash entry in `next.config.ts` and the footer credit once no remote images remain.
+- **Media**: every photo is referenced from `data/media.ts`. Replace a `src` with a local path such as `/images/hero/cabinet.jpg` (file in `public/`) and no component changes. Remove the Unsplash entry in `next.config.ts` and the footer credit once no remote images remain.
 - **Access request link**: `site.accessRequestUrl` in `data/content.ts` is a placeholder (`#contact`). Point it at the app's access-request route.
 - **Logo**: source files are in `ClickMed-logo/`. Web versions (trimmed, resized, plus `-light` versions with the teal turned white for dark backgrounds) are in `public/brand/` and referenced from `brand` in `data/media.ts`. Components: `ClickMedLogo`, `ClickMedMark` and `BrandMotif` in `components/brand/ClickMedLogo.tsx`. `app/icon.png` and `app/apple-icon.png` are generated from the symbol.
 - **Design tokens**: `app/globals.css` (`--clickmed-*` variables, mapped to Tailwind utilities such as `bg-deep`, `text-ink-soft`, `border-line`). The default Tailwind palette is disabled on purpose.

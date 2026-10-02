@@ -11,6 +11,7 @@ export const OPEN_PALETTE_EVENT = "clickmed:open-palette";
 
 const destinations = [
   { label: "Accueil", hint: "Le cabinet médical, simplifié.", href: "#top" },
+  { label: "Comment ça fonctionne", hint: "Les quatre étapes, de l'accès à l'ordonnance", href: "#comment-ca-fonctionne" },
   { label: "Dossier patient", hint: "Recherche, antécédents, allergies", href: "#produit" },
   { label: "Consultation", hint: "Motif, examen, constantes, autosave", href: "#consultation" },
   { label: "Assistant IA", hint: "Hypothèses et points à vérifier", href: "#ia" },

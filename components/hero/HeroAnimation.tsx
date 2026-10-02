@@ -22,9 +22,7 @@ export function HeroAnimation({ children, className }: { children: React.ReactNo
       if (window.__clickmedReveal) window.clearTimeout(window.__clickmedReveal);
 
       const mm = gsap.matchMedia();
-      mm.add(mq.motion, () => {
-        buildHeroIntro(root);
-      });
+      mm.add(mq.motion, () => buildHeroIntro(root));
       mm.add(mq.desktopMotion, () => {
         buildHeroScroll(root);
       });

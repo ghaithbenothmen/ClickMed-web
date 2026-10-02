@@ -13,7 +13,7 @@ const all = <T extends Element = HTMLElement>(root: Element, sel: string) =>
 const one = (root: Element, sel: string) => root.querySelector<HTMLElement>(sel);
 
 /** Types `el`'s data-text into it on the timeline. Returns a restore function. */
-function typeInto(tl: gsap.core.Timeline, el: HTMLElement | null, position: gsap.Position, cps = 22) {
+export function typeInto(tl: gsap.core.Timeline, el: HTMLElement | null, position: gsap.Position, cps = 22) {
   if (!el) return () => {};
   const full = el.dataset.text ?? el.textContent ?? "";
   const proxy = { n: 0 };

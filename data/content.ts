@@ -20,11 +20,53 @@ export const site = {
 
 export const hero = {
   chapter: { time: "08:30", label: "Ouverture du cabinet" },
-  titleLines: ["Le cabinet médical,", "simplifié."],
-  lead: "Patients, rendez-vous, consultations et ordonnances réunis dans un seul espace de travail.",
-  aiNote: "Une IA vous aide à réfléchir. La décision reste toujours entre les mains du médecin.",
-  primaryCta: "Demander un accès médecin",
+  titleLines: ["Des consultations plus simples,", "plus rapides et mieux organisées."],
+  /** Supporting statement; `highlight` is visually emphasised. */
+  lead: {
+    before: "ClickMed vous aide à retrouver rapidement les informations de vos patients et à gérer ",
+    highlight: "votre consultation",
+    after: " dans un seul espace.",
+  },
+  primaryCta: "Tester ClickMed gratuitement",
+  primaryNote: "Sans engagement",
+  primaryHref: "#comment-ca-fonctionne",
   secondaryCta: "Découvrir ClickMed",
+  highlights: ["Dossier patient complet", "Constantes intégrées", "Ordonnance en PDF"],
+  /** Kept for the mobile menu. */
+  aiNote: "Une IA vous aide à réfléchir. La décision reste toujours entre les mains du médecin.",
+} as const;
+
+export const howItWorks = {
+  title: "Comment ça fonctionne",
+  body: "Quatre étapes, de la demande d'accès à l'ordonnance. Rien à installer, rien à ressaisir.",
+  steps: [
+    {
+      title: "Demandez votre accès",
+      text: "L'administrateur crée et valide votre compte. Vous recevez un identifiant médecin personnel et un mot de passe temporaire.",
+      href: "#securite",
+      link: "Comptes et sécurité",
+    },
+    {
+      title: "Retrouvez votre patient",
+      text: "Une recherche par nom, date de naissance ou téléphone ouvre le dossier complet.",
+      href: "#produit",
+      link: "Le dossier patient",
+    },
+    {
+      title: "Menez la consultation",
+      text: "Motif, examen, constantes et diagnostics, enregistrés automatiquement. L'IA propose des pistes, vous décidez.",
+      href: "#consultation",
+      link: "La consultation",
+    },
+    {
+      title: "Prescrivez et terminez",
+      text: "Une ordonnance depuis un modèle, en PDF ou imprimée, puis Ctrl + Entrée pour clôturer.",
+      href: "#ordonnance",
+      link: "L'ordonnance",
+    },
+  ],
+  cta: "Demander un accès médecin",
+  ctaNote: "Sans engagement",
 } as const;
 
 export const intro = {

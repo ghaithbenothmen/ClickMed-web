@@ -6,6 +6,7 @@ import { Appointments } from "@/components/sections/Appointments";
 import { ConsultationExperience } from "@/components/sections/ConsultationExperience";
 import { FeatureStory } from "@/components/sections/FeatureStory";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Fragmented } from "@/components/sections/Fragmented";
 import { Intro } from "@/components/sections/Intro";
 import { PatientManagement } from "@/components/sections/PatientManagement";
@@ -15,7 +16,7 @@ import { Security } from "@/components/sections/Security";
 
 /**
  * One doctor's day, from opening to closing:
- * hero → the scattered practice → patient → consultation → AI → prescription
+ * hero → how it works → the scattered practice → patient → consultation → AI → prescription
  * → planning → productivity → the day in review → security → request access.
  */
 export default function HomePage() {
@@ -24,6 +25,7 @@ export default function HomePage() {
       <Navbar />
       <main id="contenu">
         <Hero />
+        <HowItWorks />
         <Intro />
         <Fragmented />
         <PatientManagement />

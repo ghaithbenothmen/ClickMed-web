@@ -127,7 +127,7 @@ export function Navbar() {
           )}
         >
           <a href="#top" className="relative z-10 rounded-lg" aria-label="ClickMed, retour en haut de page">
-            <ClickMedLogo height={scrolled ? 36 : 44} alt="" priority tone={dark && !open ? "light" : "dark"} className="transition-[height] duration-300" />
+            <ClickMedLogo height={scrolled ? 36 : 44} alt="" priority tone={dark && !open ? "light" : "dark"} />
           </a>
 
           <ul className="hidden items-center gap-1 md:flex">
